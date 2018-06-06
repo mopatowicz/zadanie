@@ -5,3 +5,24 @@
 	<input type="hidden" name="ok"> 
 </form>
 
+<?php
+if(isset($_POST["ok"]))
+{
+	require_once("st/obs.php");
+	
+	if(isset($_POST["dk"])
+	{
+		
+	}
+	
+	if(isset($_POST["pk"])
+	{
+		
+	}
+	
+	if(isset($_POST["uk"])
+	{
+		
+	}
+}
+?>
