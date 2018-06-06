@@ -24,7 +24,7 @@ class Page
 			else
 				$i--;
 		}
-		echo "<p color=\"green\">10 losowych kodów zostało dodanych.</p>";
+		echo "<p style=\"color:green\">10 losowych kodów zostało dodanych.</p>";
 	}
 	
 	public function wyswietl()
@@ -54,7 +54,43 @@ class Page
 	
 	public function usun()
 	{
+		require("db.php");
+		$tab = [];
+		$kody = str_replace(' ', '', $this->tab_usun);
+		$kody = explode("\r\n", $kody);
+		foreach($kody as $r)
+		{
+			if(!empty($r))
+			{
+				array_push($tab, $r);
+			}
+		}
+		$arr = [];
+		$zapytanie = $pdo->query("SELECT kod FROM kody");
+		while($row = $zapytanie->fetch())
+		{
+			array_push($arr, $row[0]);
+		}
+		$wynik = array_diff($tab, $arr);
 		
+		if(empty($wynik))
+		{
+			echo "<p style=\"color: green;\">Podane kody zostały usunięte.</p>";
+			foreach($tab as $r)
+			{
+				$pdo->query("DELETE FROM kody WHERE kod='$r'");
+			}
+		}
+		else
+		{
+			echo "<p style=\"color: red;\">Podane kody nie zostały usunięte. Błędne kody:</p>";
+			foreach($wynik as $r)
+			{
+				echo $r."<br>";
+			}
+		}
+		
+			
 	}
 }
 ?>
