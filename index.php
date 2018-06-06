@@ -6,10 +6,10 @@
 </form>
 
 <?php
+require_once("st/obs.php");
+$v = new Page();
 if(isset($_POST["ok"]))
 {
-	require_once("st/obs.php");
-	$v = new Page();
 	
 	if(isset($_POST["dk"]))
 	{
@@ -23,7 +23,18 @@ if(isset($_POST["ok"]))
 	
 	if(isset($_POST["uk"]))
 	{
-		
+		?>
+		<form method="post" action="">
+			<textarea name="kody" style="width: 400px; height: 300px;" placeholder="Wprowadź kody"></textarea>
+			<br>
+			<input type="submit" name="usun">
+		</form>
+		<?php
 	}
+}
+if(isset($_POST["usun"]))
+{
+	$v->tab_usun = $_POST["kody"];
+	$v->usun();
 }
 ?>

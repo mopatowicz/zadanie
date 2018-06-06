@@ -1,6 +1,13 @@
 <?php
 class Page
 {
+	public $tab_usun;
+	
+	public function _set($n, $w)
+	{
+		$this->$n = $w;
+	}
+	
 	public function dodaj()
 	{
 		require("db.php");
@@ -43,6 +50,11 @@ class Page
 			?>
 		</table>
 		<?php
+	}
+	
+	public function usun()
+	{
+		
 	}
 }
 ?>
