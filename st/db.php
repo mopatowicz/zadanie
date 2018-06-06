@@ -1,7 +1,11 @@
 <?php
 try
 {
-	$pdo = new PDO('mysql:host=localhost;dbname=zadanie;charset=utf8', 'root', '');
+	$serwer = "localhost";
+	$baza = "zadanie";
+	$uzytkownik = "root";
+	$haslo = "";
+	$pdo = new PDO('mysql:host='.$serwer.';dbname='.$baza.';charset=utf8', $uzytkownik, $haslo);
 }
 catch(PDOException $e)
 {
